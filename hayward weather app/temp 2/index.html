@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!--Media Query-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Hayward Forecast</title>
+
+    <!--Styling in css-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Angular JS -->
+    <script src="js/angular.js"></script>
+  
+  </head>
+    
+    <!--Portray Weather Forecast-->
+  <body ng-app="WeatherApp">
+    <div class="main" ng-controller="MainFunction">
+      <div class="container">
+        <div class="row">
+          <div class="margins col-xs-12">
+            <h1>Hayward Weather</h1>
+              <div class="forecast" ng-repeat="day in fiveDay.forecast.simpleforecast.forecastday | limitTo: 5">
+              <div class="day row col-xs-2">
+
+                <!-- datetime -->
+                <div class="weekday col-xs-12">
+                  <p>{{ day.date.weekday_short + ", " + day.date.month + "/" + day.date.day }}</p>
+                </div>
+
+
+                <!-- icon -->
+                <div class="weather col-xs-12">
+                  <p>{{ day.conditions }}</p>
+									 <img ng-src="{{ day.icon_url }}">
+                  </div>
+
+
+                <!-- high temp -->
+                <div class="high col-xs-12">
+                  <p>{{ "High: " + day.high.fahrenheit }}</p>
+                </div>
+
+
+                <!-- low temp -->
+                <div class="low col-xs-12">
+                  <p>{{ "Low: " + day.low.fahrenheit }}</p>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- start javascript -->
+    <script src="js/app.js"></script>
+
+    <!-- functions -->
+    <script src="js/function/mainfunction.js"></script>
+
+    <!-- weather forecast -->
+    <script src="js/conditions/weather.js"></script>
+
+   </body>
+</html>
